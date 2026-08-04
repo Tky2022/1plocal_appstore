@@ -1,0 +1,22 @@
+name: Sync Fork Upstream Mirror
+permissions:
+  contents: write
+on:
+  # 定时任务：UTC 时间，下面示例 UTC 0点、12点执行（北京时间 8:00、20:00）
+  schedule:
+    - cron: '0 0,12 * * *'
+  # 支持网页手动一键触发同步
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync fork with original upstream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh repo sync ${{ github.repository }}
+          # ==========强制覆盖版本（按需开启！取消注释启用）==========
+          # 当你fork存在自己修改，想要彻底覆盖和上游保持完全一致打开下面这行
+          # gh repo sync ${{ github.repository }} --force
