@@ -2,24 +2,22 @@ networks:
   1panel-network:
     external: true
 services:
-  flexget:
-    image: "linuxserver/flexget:3.20.0"
+  jackett:
+    image: "linuxserver/jackett:0.24.2330"
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
       - 1panel-network
     ports:
-      - "${PANEL_APP_PORT_HTTP}:5050"
+      - "${PANEL_APP_PORT_HTTP}:9117"
     volumes:
       - "${CONFIG_PATH}:/config"
-      - "${DOWNLOADS_PATH}:/data"
+      - "${DOWNLOAD_PATH}:/downloads"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=${TIME_ZONE}
-      - FG_LOG_LEVEL=${FG_LOG_LEVEL}
-      - FG_LOG_FILE=${FG_LOG_FILE}
-      - FG_CONFIG_FILE=${FG_CONFIG_FILE}
-      - FG_WEBUI_PASSWORD=${FG_WEBUI_PASSWORD}
+      - AUTO_UPDATE=${AUTO_UPDATE}
+      - RUN_OPTS=${RUN_OPTS:-}
     labels:
       createdBy: "Apps"

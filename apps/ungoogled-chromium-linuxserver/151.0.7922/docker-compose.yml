@@ -2,8 +2,8 @@ networks:
   1panel-network:
     external: true
 services:
-  brave:
-    image: "linuxserver/brave:1.93.129"
+  ungoogled-chromium:
+    image: "linuxserver/ungoogled-chromium:151.0.7922"
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
@@ -17,9 +17,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=${TIME_ZONE}
+      - CHROME_CLI=${CHROME_CLI:-https://www.linuxserver.io/}
       - CUSTOM_USER=${CUSTOM_USER}
       - PASSWORD=${PASSWORD}
-      - TITLE=${TITLE:-Brave}
+      - TITLE=${TITLE:-Ungoogled Chromium}
       - SELKIES_UI_TITLE=${SELKIES_UI_TITLE:-Selkies}
       - DASHBOARD=${DASHBOARD:-selkies-dashboard}
       - LC_ALL=${LC_ALL}
