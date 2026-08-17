@@ -596,6 +596,10 @@ class RenovateAppVersionTests(unittest.TestCase):
         self.assertEqual(["kaneo"], primary["kaneo"])
         self.assertEqual(["manyfold"], primary["manyfold-linuxserver"])
         self.assertEqual(["netbox"], primary["netbox-linuxserver"])
+        self.assertEqual(
+            ["unifi-network-application"],
+            primary["unifi-network-application-linuxserver"],
+        )
         self.assertEqual(["zipline"], primary["zipline"])
 
     def test_automerge_whitelist_contains_only_single_service_apps(self):
@@ -810,6 +814,33 @@ class RenovateAppVersionTests(unittest.TestCase):
             )
         self.assertIn("headRefName,headRepositoryOwner,isCrossRepository", reconcile)
         self.assertIn('.headRefName | startswith("selfhosted-renovate/")', reconcile)
+
+    def test_automerge_allows_exact_digest_only_updates_without_version_marker(self):
+        workflow = (
+            REPO_ROOT / ".github" / "workflows" / "renovate-automerge.yml"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("def digest_reference(image):", workflow)
+        self.assertIn(
+            're.fullmatch(r"([^@\\s]+)@sha256:([0-9a-fA-F]{64})", image)',
+            workflow,
+        )
+        self.assertIn("old_digest[0] != new_digest[0]", workflow)
+        self.assertIn("old_digest[1] == new_digest[1]", workflow)
+        self.assertIn("filename_is_compose != previous_is_compose", workflow)
+        self.assertIn("digest_only=true", workflow)
+        self.assertIn("steps.shape.outputs.digest_only", workflow)
+        self.assertIn("Digest-only image update; app-version marker is not required", workflow)
+        self.assertIn("Update app version [skip ci]", workflow)
+
+    def test_reconcile_delegates_all_whitelisted_open_prs_to_automerge_gate(self):
+        workflow = (
+            REPO_ROOT / ".github" / "workflows" / "renovate-automerge-reconcile.yml"
+        ).read_text(encoding="utf-8")
+
+        self.assertNotIn('index("renovate-auto")', workflow)
+        self.assertNotIn("Update app version [skip ci]", workflow)
+        self.assertIn("gh workflow run renovate-automerge.yml", workflow)
 
     def test_semantic_entrypoint_blocks_external_host_abort(self):
         entrypoint = REPO_ROOT / ".github" / "scripts" / "renovate-entrypoint.sh"

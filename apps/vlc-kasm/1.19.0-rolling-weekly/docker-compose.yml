@@ -1,6 +1,6 @@
 services:
   vlc-kasm:
-    image: "kasmweb/vlc:1.19.0-rolling-weekly@sha256:29ca8e549087ee88f210182ac15658ace784af5e1d0bc47de6433ace5b73a18e"
+    image: "kasmweb/vlc:1.19.0-rolling-weekly@sha256:b03e3e433d4a92a23498c44f92755113bc4a9f6ee2481eddc5d2e423741a7c04"
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     networks:
