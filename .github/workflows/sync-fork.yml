@@ -2,9 +2,9 @@ name: Sync Fork Upstream Mirror
 permissions:
   contents: write
 on:
-  # 定时任务：UTC 时间，下面示例 UTC 0点、12点执行（北京时间 8:00、20:00）
+  # 定时任务：UTC 时间，下面示例 UTC 1点、12点执行（北京时间 8:00、20:00）
   schedule:
-    - cron: '0 0,12 * * *'
+    - cron: '0 1,12 * * *'
   # 支持网页手动一键触发同步
   workflow_dispatch:
 
