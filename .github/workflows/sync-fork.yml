@@ -18,5 +18,5 @@ jobs:
         run: |
           gh repo sync ${{ github.repository }}
           # ==========强制覆盖版本（按需开启！取消注释启用）==========
-          # 当你fork存在自己修改，想要彻底覆盖和上游保持完全一致打开下面这行
-          # gh repo sync ${{ github.repository }} --force
+          当你fork存在自己修改，想要彻底覆盖和上游保持完全一致打开下面这行
+          gh repo sync ${{ github.repository }} --force
