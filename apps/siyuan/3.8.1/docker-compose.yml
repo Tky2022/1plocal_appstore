@@ -1,14 +1,16 @@
 services:
-  linkding:
+  siyuan:
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
       - 1panel-network
     ports:
-      - "${PANEL_APP_PORT_HTTP}:9090"
+      - "${PANEL_APP_PORT_HTTP}:6806"
     volumes:
-      - "${DATA_PATH}:/etc/linkding/data"
-    image: sissbruecker/linkding:1.46.1
+      - "${DATA_PATH}:/siyuan/workspace"
+    user: "1000:1000"
+    command: "--workspace=/siyuan/workspace/"
+    image: b3log/siyuan:v3.8.1
     labels:  
       createdBy: "Apps"
 

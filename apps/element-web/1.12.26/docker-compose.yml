@@ -1,16 +1,15 @@
 services:
-  rembg:
-    image: "danielgatis/rembg:2.0.80"
+  element-web:
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
       - 1panel-network
     ports:
-      - "${PANEL_APP_PORT_HTTP}:7000"
-    command: "${COMMAND}"
-    labels:
+      - "${PANEL_APP_PORT_HTTP}:80"
+    image: vectorim/element-web:v1.12.26
+    labels:  
       createdBy: "Apps"
 
-networks:
-  1panel-network:
+networks:  
+  1panel-network:  
     external: true
