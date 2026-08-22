@@ -2,22 +2,19 @@ networks:
   1panel-network:
     external: true
 services:
-  jackett:
-    image: "linuxserver/jackett:0.24.2434"
+  grav:
+    image: "linuxserver/grav:2.0.21"
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
       - 1panel-network
     ports:
-      - "${PANEL_APP_PORT_HTTP}:9117"
+      - "${PANEL_APP_PORT_HTTP}:80"
     volumes:
       - "${CONFIG_PATH}:/config"
-      - "${DOWNLOAD_PATH}:/downloads"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=${TIME_ZONE}
-      - AUTO_UPDATE=${AUTO_UPDATE}
-      - RUN_OPTS=${RUN_OPTS:-}
     labels:
       createdBy: "Apps"
