@@ -1,14 +1,17 @@
 services:
-  passwordpusher:
+  wallos:
     container_name: ${CONTAINER_NAME}
     restart: always
     networks:
       - 1panel-network
     ports:
-      - "${PANEL_APP_PORT_HTTP}:5100"
+      - "${PANEL_APP_PORT_HTTP}:80"
+    volumes:
+      - ./data/db:/var/www/html/db
+      - ./data/logos:/var/www/html/images/uploads/logos
     environment:
-      - DATABASE_URL=mysql2://${PANEL_DB_USER}:${PANEL_DB_USER_PASSWORD}@${PANEL_DB_HOST}:${PWPUSHER_DB_PORT}/${PANEL_DB_NAME}
-    image: pglombardo/pwpush:2.11.4
+      - TZ=${TIME_ZONE}
+    image: bellamy/wallos:5.4.5
     labels:  
       createdBy: "Apps"
 
