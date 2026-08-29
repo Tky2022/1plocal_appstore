@@ -103,3 +103,4 @@ ensure_dir() {
 }
 
 ensure_dir "APP_DATA_DIR" "./data"
+ensure_dir "APP_UPLOADS_DIR" "./data/uploads"
