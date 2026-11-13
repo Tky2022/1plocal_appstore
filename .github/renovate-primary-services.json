@@ -37,6 +37,9 @@
     "kibana",
     "kibana-elasticsearch"
   ],
+  "kimai-linuxserver": [
+    "kimai"
+  ],
   "immich": [
     "immich-server"
   ],
@@ -60,6 +63,9 @@
   "rocketchat": [
     "rocketchat"
   ],
+  "traccar": [
+    "traccar"
+  ],
   "safeline": [
     "safeline-mgt"
   ],
@@ -76,8 +82,7 @@
     "weblate"
   ],
   "woodpecker": [
-    "woodpecker-server",
-    "woodpecker-agent"
+    "woodpecker-server"
   ],
   "wukongim": [
     "wukongim"
@@ -87,5 +92,38 @@
   ],
   "zipline": [
     "zipline"
+  ],
+  "asciinema-server": [
+    "asciinema-server"
+  ],
+  "bisq2-node": [
+    "server"
+  ],
+  "bookstack-linuxserver": [
+    "bookstack"
+  ],
+  "firecrawl": [
+    "firecrawl"
+  ],
+  "hedgedoc-linuxserver": [
+    "hedgedoc"
+  ],
+  "mastodon-linuxserver": [
+    "mastodon"
+  ],
+  "milvus": [
+    "standalone"
+  ],
+  "mixspace": [
+    "mixspace"
+  ],
+  "opencloud": [
+    "opencloud"
+  ],
+  "odoo": [
+    "odoo"
+  ],
+  "planka-linuxserver": [
+    "planka"
   ]
 }

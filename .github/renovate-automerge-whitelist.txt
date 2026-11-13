@@ -322,6 +322,7 @@ socket-proxy-linuxserver
 synclounge-linuxserver
 syslog-ng-linuxserver
 tautulli-linuxserver
+telegram-linuxserver
 thelounge-linuxserver
 tvheadend-linuxserver
 ubooquity-linuxserver
@@ -422,3 +423,98 @@ webclaw
 
 # Reviewed single-service Renovate candidates (2026-09-07).
 moltis
+
+# Reviewed single-service LinuxServer Renovate candidates (2026-10-31).
+audacity-linuxserver
+speedtest-tracker-linuxserver
+
+# Explicit owner-requested exception; retain the normal shape and security gates.
+1panel
+
+# Reviewed 2026-10-29: stable single-service compose and image-only Renovate history.
+# No special runtime flags, recent maintainer repairs, or open PR at admission.
+immich-kiosk
+kanboard
+mediamtx
+resin
+shlink
+silverbullet
+xiaomi-album-syncer
+
+# Reviewed 2026-10-29: #8029 exact upgrade smoke and secret checks passed; stable single-service shape.
+# CVE scan deferred at owner request; future PRs remain subject to the workflow's image-only and shape gates.
+pdfding
+
+# Reviewed 2026-10-29 after #8012: stable single-service shape; recent Renovate updates are image-only; exact upgrade smoke to v4.0.20 and source secret scan passed. CVE status remains unassessed.
+imgproxy
+
+# Reviewed 2026-10-31: stable single-service Compose, no special runtime flags, and recent merged
+# Renovate image updates. PRs changed the Compose image; other package files were unchanged moves
+# into new version directories where applicable.
+# Evidence: #7333, #7117, #7832, #7809, #7643, #7813/#7814, and #6755.
+freecad-linuxserver
+intellij-idea-linuxserver
+onlyoffice-linuxserver
+pcsx2-linuxserver
+scummvm-linuxserver
+vlc-linuxserver
+vscodium-linuxserver
+vscodium-web-linuxserver
+
+# Kept out after review: Yaak needed recent source-trust/rebuild work (#6397/#6983); Audacity had a
+# source-trust correction (#6401); Piper needed package maintenance (#6083); Speedtest Tracker had
+# recent init/upgrade maintenance; Krita needed a maintainer rebuild (#6939); MariaDB is stateful;
+# Altus #4968 changed README/security guidance beyond the image update. All 24 KasmWeb app packages
+# are already listed.
+
+# Reviewed 2026-10-31: single-service Compose shape, no special runtime permissions, and merged
+# Renovate PRs changed only the image while leaving the packaged app files unchanged or moved.
+# Evidence: #6244 (DOSBox Staging), #5395/#5771/#5831 (Obsidian), #4864/#6958 (Vivaldi), and
+# #5935 (Webcord). Upgrade scripts remain unchanged by these image updates.
+dosbox-staging-linuxserver
+obsidian-linuxserver
+vivaldi-linuxserver
+webcord-linuxserver
+
+# Reviewed 2026-10-31: separate BabyBuddy and Grocy package keys using the lscr.io alias have
+# stable single-service Compose shapes, no special flags, and their own image-only Renovate history.
+# Evidence: #5649/#6776/#7062 (BabyBuddy) and #6494 (Grocy).
+babybuddy
+grocy
+
+# Reviewed 2026-11-01: stable single-service Compose, image-only Renovate history,
+# no special runtime flags or recent package repairs. #8157 upgrade smoke passed
+# on the exact PR tree (2.8.10 package directory with image tag 2.8.11); CVE remains unassessed.
+bentopdf
+
+# Reviewed 2026-11-03: stable single-service Compose shapes, image-only Renovate updates,
+# no special runtime permissions or recent package repairs; exact upgrade smoke passed on
+# #8106 (Trailbase), #8125 (Downtify), #8130 (OliveTin), and #8141 (GoModel). CVE scans
+# were not run; see the task-local reports and parameter notes for bound evidence.
+downtify
+gomodel
+olivetin
+trailbase
+stump
+
+# Reviewed 2026-11-04: stable single-service shape; #6357 and #8181 were image-only Renovate updates.
+# #8181 exact upgrade smoke and source secret scan passed; CVE scan was intentionally not run.
+actual-budget
+# Reviewed 2026-11-04: stable single-service Compose shapes, image-only Renovate updates,
+# no special runtime flags or recent package repairs; exact upgrade smoke passed on #8193 and #8195.
+# CVE scans were skipped; see task-local parameter notes and bound reports.
+drawdb
+hitkeep
+
+# Reviewed 2026-11-06: single-service LinuxServer Cura image-only update (#8318), stable Compose shape, and no special runtime permissions. The existing upgrade script only fills missing/empty environment defaults.
+cura-linuxserver
+
+# Reviewed 2026-11-06: #8359 (Keila), #8375 (Autobrr), and #8394 (LMS)
+# are stable single-service packages with no special runtime privileges. Exact
+# new-version trees were verified as image-only copies; earlier Renovate image
+# updates exist in #8211, #6687/#5871, and #7043. Upgrade scripts and data paths
+# are unchanged. CVEs remain unassessed; owner-authorized whitelist updates skip
+# upgrade smoke and retain the automerge shape and source checks.
+autobrr
+keila
+lms
